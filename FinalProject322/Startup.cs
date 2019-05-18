@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using FinalProject322.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using FinalProject322.Models;
 
 namespace FinalProject322
 {
@@ -38,7 +39,7 @@ namespace FinalProject322
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<Userr>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -66,12 +67,22 @@ namespace FinalProject322
 
             app.UseAuthentication();
 
+      
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                  name: "areas",
+                  template: "{area=Admin}/{controller=HomeAdmin}/{action=Index}/{id?}"
+                );
+            });
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                  name: "areas",
+                  template: "{area=Customer}/{controller=Home}/{action=Index}/{id?}"
+                );
             });
         }
     }
 }
+
