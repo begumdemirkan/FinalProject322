@@ -56,17 +56,21 @@ namespace FinalProject322.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "Şifreler birbirleri ile uymuyor.")]
             public string ConfirmPassword { get; set; }
 
+            [Required]
+            [StringLength(100)]
             public string Ad { get; set; }
 
+            [Required]
+            [StringLength(100)]
             public string Soyad { get; set; }
-
+            [Required]
             public string Adres { get; set; }
-
+            [Required]
             public string Telefon { get; set; }
-
+            [Required]
             [Display(Name = "İl")]
             public string il { get; set; }
-
+            [Required]
             [Display(Name = "Posta Kodu")]
             public string posta { get; set; }
 

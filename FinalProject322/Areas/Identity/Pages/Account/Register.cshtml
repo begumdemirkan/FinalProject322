@@ -4,7 +4,6 @@
     ViewData["Title"] = "Register";
     Layout = null;
 }
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,15 +14,16 @@
     <meta name="author" content="Hau Nguyen">
     <meta name="keywords" content="au theme template">
     <!-- Title Page-->
-    <title>Register</title>
+    <title>Login</title>
     <!-- Fontfaces CSS-->
     <link href="~/admin/css/font-face.css" rel="stylesheet" media="all">
     <link href="~/admin/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="~/admin/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="~/admin/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
     <!-- Bootstrap CSS-->
-    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <link href="~/admin/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
     <!-- Vendor CSS-->
+    <link href="~/admin/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
     <link href="~/admin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
     <link href="~/admin/vendor/wow/animate.css" rel="stylesheet" media="all">
     <link href="~/admin/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
@@ -44,80 +44,76 @@
                                 <img src="~/admin/images/icon/logo.png" alt="CoolAdmin">
                             </a>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                               
-                                    <form id="account" method="post">
-                                        <div class="form-group">
-                                            <label>Ad</label>
-                                            <input class="au-input au-input--full" type="text" name="ad">
-                                            <span asp-validation-for="Input.Ad" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Soyad</label>
-                                            <input class="au-input au-input--full" type="text" name="soyad">
-                                            <span asp-validation-for="Input.Soyad" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-2">
-                                                <label asp-for="Input.Email" class="control-label " type="text" ></label>
-                                            </div>
-                                            <div class="col-7">
-                                                <input asp-for="Input.Email" class="form-control au-input au-input--full" />
-                                            </div>
-                                            <span asp-validation-for="Input.Email" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Telefon</label>
-                                            <input class="au-input au-input--full" type="text" name="telefon">
-                                            <span asp-validation-for="Input.Telefon" class="text-danger"></span>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>Adres</label>
-                                            <input class="au-input au-input--full" type="text" name="adres">
-                                            <span asp-validation-for="Input.Adres" class="text-danger"></span>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>İl</label>
-                                            <input class="au-input au-input--full" type="text" name="il">
-                                            <span asp-validation-for="Input.il" class="text-danger"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Posta Kodu</label>
-                                            <input class="au-input au-input--full" type="text" name="posta">
-                                            <span asp-validation-for="Input.posta" class="text-danger"></span>
-                                        </div>
-                                        <div class="login-checkbox">
-                                            <label>
-                                                <input type="checkbox" name="aggree">Üyelik sözleşmesini kabul ediyorum.
-                                            </label>
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="au-btn au-btn--block au-btn--green m-b-20">Üye Ol</button>
-                                        </div>
-
-                                        @*<div class="form-group row">
-                            <div class="col-2 offset-2">
-                                <button type="submit" class="btn btn-primary">Kayıt Ol</button>
-                            </div>
-                        </div>*@
-                                    </form>
-                                    </div>
-                                
-                                    <div class="register-link">
-                                        <p>
-                                            Zaten üye misin?
-                                            <a href="Identity/Account/Login">Giriş Yap</a>
-                                        </p>
-                                    </div>
+                        div class="row">
+                        <div class="col-md-4">
+                            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                                <h4>Create a new account.</h4>
+                                <hr />
+                                <div asp-validation-summary="All" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label asp-for="Input.Ad"></label>
+                                    <input asp-for="Input.Ad" class="form-control" />
+                                    <span asp-validation-for="Input.Ad" class="text-danger"></span>
                                 </div>
-                            </div>
+                                <div class="form-group">
+                                    <label asp-for="Input.Soyad"></label>
+                                    <input asp-for="Input.Soyad" class="form-control" />
+                                    <span asp-validation-for="Input.Soyad" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Input.Email"></label>
+                                    <input asp-for="Input.Email" class="form-control" />
+                                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Input.Telefon"></label>
+                                    <input asp-for="Input.Telefon" class="form-control" />
+                                    <span asp-validation-for="Input.Telefon" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Input.Adres"></label>
+                                    <input asp-for="Input.Adres" class="form-control" />
+                                    <span asp-validation-for="Input.Adres" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Input.il"></label>
+                                    <input asp-for="Input.il" class="form-control" />
+                                    <span asp-validation-for="Input.il" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Input.posta"></label>
+                                    <input asp-for="Input.posta" class="form-control" />
+                                    <span asp-validation-for="Input.posta" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Input.Password"></label>
+                                    <input asp-for="Input.Password" class="form-control" />
+                                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Input.ConfirmPassword"></label>
+                                    <input asp-for="Input.ConfirmPassword" class="form-control" />
+                                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Register</button>
+                            </form>
                         </div>
+                        <div class="form-group">
+                            <p>
+                                <a id="forgot-password" asp-page="./ForgotPassword">Şifreni mi Unuttun?</a>
+                            </p>
+                            <p>
+                                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Üye Ol</a>
+                            </p>
+                        </div>
+                       
+                        
                     </div>
+                </div>
+            </div>
         </div>
     </div>
+    
     <!-- Jquery JS-->
     <script src="~/admin/vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->
@@ -138,6 +134,171 @@
     <script src="~/admin/js/main.js"></script>
 </body>
 </html>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+@*<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <!-- Required meta tags-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="au theme template">
+        <meta name="author" content="Hau Nguyen">
+        <meta name="keywords" content="au theme template">
+        <!-- Title Page-->
+        <title>Register</title>
+        <!-- Fontfaces CSS-->
+        <link href="~/admin/css/font-face.css" rel="stylesheet" media="all">
+        <link href="~/admin/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+        <link href="~/admin/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+        <link href="~/admin/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+        <!-- Bootstrap CSS-->
+        <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+        <!-- Vendor CSS-->
+        <link href="~/admin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+        <link href="~/admin/vendor/wow/animate.css" rel="stylesheet" media="all">
+        <link href="~/admin/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+        <link href="~/admin/vendor/slick/slick.css" rel="stylesheet" media="all">
+        <link href="~/admin/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+        <link href="~/admin/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+        <!-- Main CSS-->
+        <link href="~/admin/css/theme.css" rel="stylesheet" media="all">
+    </head>
+    <body class="animsition">
+        <div class="page-wrapper">
+            <div class="page-content--bge5">
+                <div class="container">
+                    <div class="login-wrap">
+                        <div class="login-content">
+                            <div class="login-logo">
+                                <a href="#">
+                                    <img src="~/admin/images/icon/logo.png" alt="CoolAdmin">
+                                </a>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <form id="account" method="post">
+                                        <div class="form-group row">
+                                            <div class="col-2">
+                                                <label asp-for="Input.Ad" class="control-label " type="text"></label>
+                                            </div>
+                                            <div class="col-7">
+                                                <input asp-for="Input.Ad" class="form-control " />
+                                            </div>
+                                            <span asp-validation-for="Input.Ad" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-2">
+                                                <label asp-for="Input.Soyad" class="control-label " type="text"></label>
+                                            </div>
+                                            <div class="col-7">
+                                                <input asp-for="Input.Soyad" class="form-control au-input au-input--full" />
+                                            </div>
+                                            <span asp-validation-for="Input.Soyad" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-2">
+                                                <label asp-for="Input.Email" class="control-label " type="text"></label>
+                                            </div>
+                                            <div class="col-7">
+                                                <input asp-for="Input.Email" class="form-control au-input au-input--full" />
+                                            </div>
+                                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-2">
+                                                <label asp-for="Input.Telefon" class="control-label " type="text"></label>
+                                            </div>
+                                            <div class="col-7">
+                                                <input asp-for="Input.Telefon" class="form-control au-input au-input--full" />
+                                            </div>
+                                            <span asp-validation-for="Input.Telefon" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-2">
+                                                <label asp-for="Input.Adres" class="control-label " type="text"></label>
+                                            </div>
+                                            <div class="col-7">
+                                                <input asp-for="Input.Adres" class="form-control au-input au-input--full" />
+                                            </div>
+                                            <span asp-validation-for="Input.Adres" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-2">
+                                                <label asp-for="Input.il" class="control-label " type="text"></label>
+                                            </div>
+                                            <div class="col-7">
+                                                <input asp-for="Input.il" class="form-control au-input au-input--full" />
+                                            </div>
+                                            <span asp-validation-for="Input.il" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-2">
+                                                <label asp-for="Input.posta" class="control-label " type="text"></label>
+                                            </div>
+                                            <div class="col-7">
+                                                <input asp-for="Input.posta" class="form-control au-input au-input--full" />
+                                            </div>
+                                            <span asp-validation-for="Input.posta" class="text-danger"></span>
+                                        </div>
+
+
+                                        <div class="login-checkbox">
+                                            <label>
+                                                <input type="checkbox" name="aggree">Üyelik sözleşmesini kabul ediyorum.
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="au-btn au-btn--block au-btn--green m-b-20">Üye Ol</button>
+                                        </div>
+
+
+                                    </form>
+                                </div>
+
+                                <div class="register-link">
+                                    <p>
+                                        Zaten üye misin?
+                                        <a href="Identity/Account/Login">Giriş Yap</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Jquery JS-->
+        <script src="~/admin/vendor/jquery-3.2.1.min.js"></script>
+        <!-- Bootstrap JS-->
+        <script src="~/admin/vendor/bootstrap-4.1/popper.min.js"></script>
+        <script src="~/admin/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+        <!-- Vendor JS       -->
+        <script src="~/admin/vendor/slick/slick.min.js"></script>
+        <script src="~/admin/vendor/wow/wow.min.js"></script>
+        <script src="~/admin/vendor/animsition/animsition.min.js"></script>
+        <script src="~/admin/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+        <script src="~/admin/vendor/counter-up/jquery.waypoints.min.js"></script>
+        <script src="~/admin/vendor/counter-up/jquery.counterup.min.js"></script>
+        <script src="~/admin/vendor/circle-progress/circle-progress.min.js"></script>
+        <script src="~/admin/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+        <script src="~/admin/vendor/chartjs/Chart.bundle.min.js"></script>
+        <script src="~/admin/vendor/select2/select2.min.js"></script>
+        <!-- Main JS-->
+        <script src="~/admin/js/main.js"></script>
+    </body>
+    </html>
+
+
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }*@
+
+
+
 <!-- end document-->
 @*<br/>
     <br/>
@@ -242,7 +403,3 @@
             </div>
         </div>
     </div>*@
-
-    @section Scripts {
-        <partial name="_ValidationScriptsPartial" />
-    }
