@@ -44,63 +44,78 @@
                                 <img src="~/admin/images/icon/logo.png" alt="CoolAdmin">
                             </a>
                         </div>
-                        <div class="login-form">
-                            <form id="account" method="post">
-                                <div class="form-group">
-                                    <label>Ad</label>
-                                    <input class="au-input au-input--full" type="text" name="ad">
-                                    <span asp-validation-for="Input.Ad" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label>Soyad</label>
-                                    <input class="au-input au-input--full" type="text" name="soyad">
-                                    <span asp-validation-for="Input.Soyad" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input class="au-input au-input--full" type="text" name="email">
-                                    <span asp-validation-for="Input.Email" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label>Telefon</label>
-                                    <input class="au-input au-input--full" type="text" name="telefon">
-                                    <span asp-validation-for="Input.Telefon" class="text-danger"></span>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Adres</label>
-                                    <input class="au-input au-input--full" type="text" name="adres">
-                                    <span asp-validation-for="Input.Adres" class="text-danger"></span>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>İl</label>
-                                    <input class="au-input au-input--full" type="text" name="il">
-                                    <span asp-validation-for="Input.il" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label>Posta Kodu</label>
-                                    <input class="au-input au-input--full" type="text" name="posta">
-                                    <span asp-validation-for="Input.posta" class="text-danger"></span>
-                                </div>
-                                <div class="login-checkbox">
-                                    <label>
-                                        <input type="checkbox" name="aggree">Üyelik sözleşmesini kabul ediyorum.
-                                    </label>
-                                </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Üye Ol</button>
+                        <div class="row">
+                            <div class="col-md-12">
                                
-                            </form>
-                            <div class="register-link">
-                                <p>
-                                    Zaten üye misin?
-                                    <a href="Identity/Account/Login">Giriş Yap</a>
-                                </p>
+                                    <form id="account" method="post">
+                                        <div class="form-group">
+                                            <label>Ad</label>
+                                            <input class="au-input au-input--full" type="text" name="ad">
+                                            <span asp-validation-for="Input.Ad" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Soyad</label>
+                                            <input class="au-input au-input--full" type="text" name="soyad">
+                                            <span asp-validation-for="Input.Soyad" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-2">
+                                                <label asp-for="Input.Email" class="control-label " type="text" ></label>
+                                            </div>
+                                            <div class="col-7">
+                                                <input asp-for="Input.Email" class="form-control au-input au-input--full" />
+                                            </div>
+                                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Telefon</label>
+                                            <input class="au-input au-input--full" type="text" name="telefon">
+                                            <span asp-validation-for="Input.Telefon" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Adres</label>
+                                            <input class="au-input au-input--full" type="text" name="adres">
+                                            <span asp-validation-for="Input.Adres" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>İl</label>
+                                            <input class="au-input au-input--full" type="text" name="il">
+                                            <span asp-validation-for="Input.il" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Posta Kodu</label>
+                                            <input class="au-input au-input--full" type="text" name="posta">
+                                            <span asp-validation-for="Input.posta" class="text-danger"></span>
+                                        </div>
+                                        <div class="login-checkbox">
+                                            <label>
+                                                <input type="checkbox" name="aggree">Üyelik sözleşmesini kabul ediyorum.
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="au-btn au-btn--block au-btn--green m-b-20">Üye Ol</button>
+                                        </div>
+
+                                        @*<div class="form-group row">
+                            <div class="col-2 offset-2">
+                                <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+                            </div>
+                        </div>*@
+                                    </form>
+                                    </div>
+                                
+                                    <div class="register-link">
+                                        <p>
+                                            Zaten üye misin?
+                                            <a href="Identity/Account/Login">Giriş Yap</a>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
         </div>
     </div>
     <!-- Jquery JS-->
@@ -226,8 +241,8 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div>*@
 
     @section Scripts {
         <partial name="_ValidationScriptsPartial" />
-    }*@
+    }
