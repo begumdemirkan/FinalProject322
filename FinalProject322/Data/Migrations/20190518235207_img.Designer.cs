@@ -4,14 +4,16 @@ using FinalProject322.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FinalProject322.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190518235207_img")]
+    partial class img
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,26 +33,6 @@ namespace FinalProject322.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Category");
-                });
-
-            modelBuilder.Entity("FinalProject322.Models.Kupon", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<double>("Indirim");
-
-                    b.Property<bool>("IsActive");
-
-                    b.Property<double>("Minmiktar");
-
-                    b.Property<string>("Name")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Kupon");
                 });
 
             modelBuilder.Entity("FinalProject322.Models.Product", b =>

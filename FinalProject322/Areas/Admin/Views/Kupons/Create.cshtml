@@ -1,0 +1,76 @@
+﻿@model FinalProject322.Models.Kupon
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <br />
+    <br />
+    <h4>Kupon Ekle</h4>
+    <hr />
+
+
+    <form method="post" enctype="multipart/form-data">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Name" class="control-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Indirim" class="control-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Indirim" class="form-control" />
+            </div>
+            <span asp-validation-for="Indirim" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Minmiktar" class="control-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Minmiktar" class="form-control" />
+            </div>
+            <span asp-validation-for="Minmiktar" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="IsActive" class="control-label"></label>
+            </div>
+            <div class="col-5">
+                <input type="checkbox" asp-for="IsActive" class="form-control" />
+            </div>
+           
+        </div>
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <div class="row">
+                    <div class="col-6">
+                        <input type="submit" value="Ekle" class="btn btn-info form-control" />
+                    </div>
+                    <div class="col-6">
+
+                        <a asp-action="Index" class="btn btn-success form-control">Listeye Dön</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div>
+
+</div>
+
+

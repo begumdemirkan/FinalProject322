@@ -1,0 +1,70 @@
+﻿@model IEnumerable<FinalProject322.Models.Kupon>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-6">
+            <h4>Kupon Listesi</h4>
+        </div>
+        <div class="col-6 text-right">
+
+            <p>
+                <a asp-class="btn btn-info" href="~/admin/kupons/create"><i class="fas fa-plus"></i> &nbsp; Ürün Ekle</a>
+            </p>
+        </div>
+    </div>
+    <br />
+    <table class="table table table-striped border">
+        <tr class="table-info">
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Indirim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Minmiktar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Indirim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Minmiktar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+
+
+            <td style="width:150px">
+                <div class="btn-group" role="group">
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-success" asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-list"></i></a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id"><i class="fas fa-trash"></i></a>
+                </div>
+            </td>
+
+        </tr>
+        }
+    </table>
+</div>
+
