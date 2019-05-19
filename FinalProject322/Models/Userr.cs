@@ -11,11 +11,21 @@ namespace FinalProject322.Models
     {
         [Required]
         [StringLength(100)]
-        public string FirstName { get; set; }
+        public string Ad { get; set; }
 
 
         [Required]
         [StringLength(100)]
-        public string LastName { get; set; }
+        public string Soyad { get; set; }
+        
+        public string Adres { get; set; }
+
+        public string Telefon { get; set; }
+
+        [Display(Name = "İl")]
+        public string il { get; set; }
+
+        [Display(Name = "Posta Kodu")]
+        public string posta { get; set; }
     }
 }

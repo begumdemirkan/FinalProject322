@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using FinalProject322.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -15,14 +16,14 @@ namespace FinalProject322.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<Userr> _signInManager;
+        private readonly UserManager<Userr> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<Userr> userManager,
+            SignInManager<Userr> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
@@ -45,15 +46,36 @@ namespace FinalProject322.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "Şifre en az 6 karekterden oluşmalıdır.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Şifre")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name ="Şifre Tekrar")]
+            [Compare("Password", ErrorMessage = "Şifreler birbirleri ile uymuyor.")]
             public string ConfirmPassword { get; set; }
+
+            public string Ad { get; set; }
+
+            public string Soyad { get; set; }
+
+            public string Adres { get; set; }
+
+            public string Telefon { get; set; }
+
+            [Display(Name = "İl")]
+            public string il { get; set; }
+
+            [Display(Name = "Posta Kodu")]
+            public string posta { get; set; }
+
+
+
+
+
+
+
         }
 
         public void OnGet(string returnUrl = null)
@@ -66,7 +88,8 @@ namespace FinalProject322.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = new Userr { UserName = Input.Email, Email = Input.Email, Ad = Input.Ad, Soyad = Input.Soyad, Adres=Input.Adres, Telefon=Input.Telefon, il=Input.il, posta=Input.posta };
+              
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

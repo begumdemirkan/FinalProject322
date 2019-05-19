@@ -19,5 +19,7 @@ namespace FinalProject322.Data
         public DbSet<Product> Product { get; set; }
 
         public DbSet<Kupon> Kupon { get; set; }
+
+        public DbSet<Userr> Userr{ get; set; }
     }
 }
