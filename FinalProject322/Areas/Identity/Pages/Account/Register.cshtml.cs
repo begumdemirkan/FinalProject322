@@ -67,12 +67,7 @@ namespace FinalProject322.Areas.Identity.Pages.Account
             public string Adres { get; set; }
             [Required]
             public string Telefon { get; set; }
-            [Required]
-            [Display(Name = "İl")]
-            public string il { get; set; }
-            [Required]
-            [Display(Name = "Posta Kodu")]
-            public string posta { get; set; }
+           
 
 
 
@@ -92,7 +87,7 @@ namespace FinalProject322.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new Userr { UserName = Input.Email, Email = Input.Email, Ad = Input.Ad, Soyad = Input.Soyad, Adres=Input.Adres, Telefon=Input.Telefon, il=Input.il, posta=Input.posta };
+                var user = new Userr { UserName = Input.Email, Email = Input.Email, Ad = Input.Ad, Soyad = Input.Soyad, Adres=Input.Adres, Telefon=Input.Telefon };
               
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)

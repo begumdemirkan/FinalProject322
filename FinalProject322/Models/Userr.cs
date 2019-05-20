@@ -22,10 +22,7 @@ namespace FinalProject322.Models
 
         public string Telefon { get; set; }
 
-        [Display(Name = "İl")]
-        public string il { get; set; }
-
-        [Display(Name = "Posta Kodu")]
-        public string posta { get; set; }
+        public int? CategoryId { get; set; }
+        public virtual Category Category { get; set; }
     }
 }

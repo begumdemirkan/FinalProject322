@@ -94,6 +94,8 @@ namespace FinalProject322.Areas.Identity.Pages.Account
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                     return Page();
                 }
+
+                
             }
 
             // If we got this far, something failed, redisplay form

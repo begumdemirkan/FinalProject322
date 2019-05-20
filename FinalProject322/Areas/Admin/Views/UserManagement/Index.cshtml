@@ -1,0 +1,71 @@
+﻿@model IEnumerable<FinalProject322.Models.UserViewmodel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>User Management</title>
+</head>
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FullName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsAdmin)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsAdmin)
+                    </td>
+                    <td>
+                        @if (item.IsAdmin)
+                        {
+                            <a asp-action="RemoveAdmin" asp-route-id="@item.Id" class="btn btn-danger">Remove Admin</a>
+                        }
+                        else
+                        {
+                            <a asp-action="MakeAdmin" asp-route-id="@item.Id" class="btn btn-primary">Make Admin</a>
+                        }
+
+                    </td>
+                    <td>
+                        <form action="Admin/UserManagement/MakeCategoryAdmin" method="post">
+                            <select id="CategoryId" name="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                            <input id="UserId" name="UserId" type="hidden" value="@item.Id" />
+                            <input type="submit" class="btn btn-danger" name="submit" value="Make Category Admin" />
+                        </form>
+
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
