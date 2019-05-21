@@ -18,7 +18,7 @@
             <div class="form-group">
                 <div class="">
                     @*<img src="@Model.Image" width="100" style="border-radius:5px; border:1px;" />*@
-                    <img class="group list-group-image img-fluid" width="100" src="~/admin/uploads/@Model.Image" alt="" />
+                    <img class="group list-group-image img-fluid" width="100%" src="~/admin/uploads/@Model.Image" alt="" />
                 </div>
             </div>
         </div>
@@ -37,12 +37,7 @@
                 <dd class="col-sm-10">
                     @Html.DisplayFor(model => model.Quantity)
                 </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Image)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Image)
-                </dd>
+              
                 <dt class="col-sm-2">
                     @Html.DisplayNameFor(model => model.Category)
                 </dt>

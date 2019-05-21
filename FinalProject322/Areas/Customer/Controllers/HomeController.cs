@@ -26,7 +26,7 @@ namespace FinalProject322.Controllers
             ViewModals vm = new ViewModals()
             {
                 Product = await _context.Product.Include(m => m.Category).ToListAsync(),
-                category = await _context.Category.ToListAsync(),
+                Category = await _context.Category.ToListAsync(),
                 Kupon=await _context.Kupon.Where(c=>c.IsActive==true).ToListAsync(),
             };
 

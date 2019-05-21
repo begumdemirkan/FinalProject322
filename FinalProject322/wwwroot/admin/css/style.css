@@ -389,11 +389,11 @@ li > a:only-child:after {
     -ms-background-size: cover;
     background-size: cover;
     position: relative;
-    height: 50em;
+    height: 15em;
 }
 
 .main-banner.inner {
-    background: url(..customer/images/toy.jpg)no-repeat center;
+    background: url(..customer/images/banner.jpg)no-repeat center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

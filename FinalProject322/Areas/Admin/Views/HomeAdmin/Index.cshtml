@@ -1,8 +1,122 @@
-﻿
+﻿@model List<FinalProject322.Models.Product>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<br /><br />
 
+
+<br /><br />
+      <div class=" container">
+          <div class="row">
+
+              @foreach (var product in Model)
+              {
+                  <div class="col-3" style="height:100%;">
+                      <div class="card mb-3">
+                          <div class="card-header">
+                              <h4 class="my-0" font-weight-normal>
+                                  <label style="font-size:23px; color:steelblue;">@product.Name</label>
+                              </h4>
+
+                          </div>
+                          <center>  <img class="card-img" style="height:100%;" src="~/admin/uploads/@product.Image" alt="Card Image" height="42" /></center>
+                          @*<img class="card-img-top" style="height:100%;" src="@product.Image" alt="Card Image" />*@
+                          <div class="card-body">
+                              <div class="d-flex justify-content-between align-items-center">
+                                  <div class="btn-group">
+                                      <label style="font-size:20px; color:#a51313"><b>@product.Price TL</b></label>
+                                  </div>
+                                  <a asp-action="Details" class="btn btn-success" asp-route-id="@product.Id">Detaylar</a>
+
+                              </div>
+                          </div>
+                      </div>
+                  
+
+                  </div>
+              }
+          </div>
+      </div>
+
+
+@*<!--Author: W3layouts
+    Author URL: http://w3layouts.com
+    License: Creative Commons Attribution 3.0 Unported
+    License URL: http://creativecommons.org/licenses/by/3.0/
+    -->
+
+    <!DOCTYPE html>
+    <html lang="zxx">
+    <head>
+        <title>Chronicle Education Category Bootstrap Responsive website Template | Home :: w3layouts</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="keywords" content="Chronicle Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+        SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+        <script>
+            addEventListener("load", function () {
+                setTimeout(hideURLbar, 0);
+            }, false);
+
+            function hideURLbar() {
+                window.scrollTo(0, 1);
+            }
+        </script>
+        <!-- Custom Theme files -->
+        <link href="~/customer/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+        <!-- shop css -->
+        <link href="~/customer/css/shop.css" type="text/css" rel="stylesheet" media="all">
+        <link href="~/customer/css/style.css" type="text/css" rel="stylesheet" media="all">
+        <!-- font-awesome icons -->
+        <link href="~/customer/css/font-awesome.css" rel="stylesheet">
+        <!-- //Custom Theme files -->
+        <!-- online-fonts -->
+        <!-- logo -->
+        <link href="//
+              fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+        <!-- titles -->
+        <link href="//fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i,800,800i" rel="stylesheet">
+        <!-- body -->
+        <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+        <!-- //online-fonts -->
+    </head>
+    <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+        <div id="home">
+
+            <!-- banner -->
+
+                <!-- banner-text -->
+                <!-- //banner-text -->
+                <img src="~/customer/images/childrens-toys-catbanner.jpg" width="1500" height="50" />
+
+            <!-- //banner -->
+            <!-- //footer-layouts -->
+        </div>
+
+    </body>
+    </html>
+
+
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha256-E/V4cWE4qvAeO5MOhjtGtqDzPndRO1LBk8lJ/PR7CA4=">
+        </script>
+    </environment>
+    <script src="~/js/site.js" asp-append-version="true"></script>*@
 
