@@ -117,7 +117,7 @@ namespace FinalProject322.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Quantity,Image,CategoryId,Price")] Product product, IFormFile FileUrl )
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Quantity,Image,CategoryId,Price")] Product product, IFormFile FileUrl )
         {
             if (id != product.Id)
             {
@@ -126,18 +126,20 @@ namespace FinalProject322.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                //string dirPath = Path.Combine(_hostingEnvironment.WebRootPath, @"admin\uploads\");
-                //var fileName = Guid.NewGuid().ToString().Replace("-", "") + "_" + FileUrl.FileName;
-                //using (var fileStream = new FileStream(dirPath + fileName, FileMode.Create))
-                //{
-                //    await FileUrl.CopyToAsync(fileStream);
-                //}
+                if(FileUrl!=null) {
+                string dirPath = Path.Combine(_hostingEnvironment.WebRootPath, @"admin\uploads\");
+                var fileName = Guid.NewGuid().ToString().Replace("-", "") + "_" + FileUrl.FileName;
+                using (var fileStream = new FileStream(dirPath + fileName, FileMode.Create))
+                {
+                    await FileUrl.CopyToAsync(fileStream);
+                }
 
 
-                //product.Image = fileName;
+                product.Image = fileName;
+                }
                 //_context.Add(product);
                 //await _context.SaveChangesAsync();
-             
+
                 try
                 {
                     _context.Update(product);

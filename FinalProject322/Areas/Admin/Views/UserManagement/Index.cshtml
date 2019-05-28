@@ -55,7 +55,7 @@
 
                     </td>
                     <td>
-                        <form action="Admin/UserManagement/MakeCategoryAdmin" method="post">
+                        <form action="~/Admin/UserManagement/MakeCategoryAdmin" method="post">
                             <select id="CategoryId" name="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
                             <input id="UserId" name="UserId" type="hidden" value="@item.Id" />
                             <input type="submit" class="btn btn-danger" name="submit" value="Make Category Admin" />

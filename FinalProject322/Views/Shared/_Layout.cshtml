@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using FinalProject322
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Required meta tags-->
@@ -29,7 +31,7 @@
 </head>
 <body class="animsition">
     <div class="page-wrapper">
-
+        <img src="~/customer/images/childrens-toys-catbanner.jpg" width="1500" height="10" />
         <!-- HEADER DESKTOP-->
         <header class="header-desktop3 d-none d-lg-block">
             <div class="section__content section__content--p35">
@@ -42,35 +44,54 @@
                     <div class="header__navbar">
                         <ul class="list-unstyled">
                             <li>
-                                <a href="~/Admin/HomeAdmin">
-                                    <i class="fas fa-home"></i>
-                                    <span href="" class="bot-line"></span>Anasayfa
-                                </a>
-                            </li>
-                            <li class="has-sub">
-                                <a href="#">
-                                    <i class="fas fa-tachometer-alt"></i>Ürün Yönetimi
-                                    <span class="bot-line"></span>
-                                </a>
-                                <ul class="header3-sub-list list-unstyled">
-                                    <li>
-                                        <a href="~/admin/categories/">Kategori Listesi</a>
-                                    </li>
-                                    <li>
-                                        <a href="~/admin/products/">Ürün Listesi</a>
-                                    </li>
-                                    <li>
-                                        <a href="~/admin/kupons/">Kupon Listesi</a>
-                                    </li>
-                                </ul>
-                            </li>
+                                
 
-                            <li>
+                                    <a asp-area="Admin" asp-controller="HomeAdmin" asp-action="Index">Anasayfa
+                                        <i class="fas fa-home"></i>
+                                        @*<span href="" class="bot-line"></span>Anasayfa*@
+                                    </a>
+                                
+                                </li>
+
+                            <li class="has-sub">
+                                @if (User.IsInRole("admin"))
+                                {
+
+                                    <a asp-area="" asp-controller="" asp-action="">
+
+                                        <i class="fas fa-tachometer-alt"></i> Ürün Yönetimi
+                                        <span class="bot-line"></span>
+
+                                    </a>
+                                }
+                                @if (User.IsInRole("admin"))
+                                {
+
+                                    <ul class="header3-sub-list">
+                                       
+                                            <a href="~/admin/categories/" class="text-dark" > Kategori Listesi</a>
+                                        
+
+                                        <a href="~/admin/products/"  class="text-dark"> Ürün Listesi</a>
+
+
+                                        <a href="~/admin/kupons/"  class="text-dark"> Kupon Listesi</a>
+
+                                    </ul>
+
+
+                                }
+
+
+
+
+<li>
                                 <a href="table.html">
                                     <i class="fas fa-trophy"></i>
                                     <span class="bot-line"></span>Features
                                 </a>
                             </li>
+
                             <li class="has-sub">
                                 <a href="#">
                                     <i class="fas fa-copy"></i>
@@ -88,6 +109,7 @@
                                     </li>
                                 </ul>
                             </li>
+
                             <li class="has-sub">
 
                                 <a href="#">
