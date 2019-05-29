@@ -10,6 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using FinalProject322.Models;
+using FinalProject322.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace FinalProject322.Areas.Identity.Pages.Account
 {
@@ -18,11 +21,13 @@ namespace FinalProject322.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<Userr> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        public readonly ApplicationDbContext _context;
 
-        public LoginModel(SignInManager<Userr> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<Userr> signInManager, ILogger<LoginModel> logger, ApplicationDbContext context)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _context = context;
         }
 
         [BindProperty]
@@ -77,6 +82,10 @@ namespace FinalProject322.Areas.Identity.Pages.Account
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
+                    var user = await _context.Users.Where(u => u.Email == Input.Email).FirstOrDefaultAsync();
+                    List<ShoppingCart> stShoppingCard = await _context.ShoppingCart.Where(u => u.UserrId ==user.Id).ToListAsync();
+                    HttpContext.Session.SetInt32("ssCardCount", stShoppingCard.Count);
+
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }

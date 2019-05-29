@@ -23,7 +23,26 @@ namespace FinalProject322.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            
+            ViewModals vm = new ViewModals()
+            {
+                Product = await _context.Product.Include(m => m.Category).ToListAsync(),
+                Category = await _context.Category.ToListAsync(),
+                Kupon = await _context.Kupon.Where(m => m.IsActive == true).ToListAsync()
+            };
+
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+            if (claim != null)
+            {
+                var cnt = _context.ShoppingCart.Where(u => u.UserrId == claim.Value).ToList().Count;
+                HttpContext.Session.SetInt32("ssCartCount", cnt);
+            }
+
+
+
+
+
             return View(await _context.Product.ToListAsync());
         }
        
@@ -54,6 +73,9 @@ namespace FinalProject322.Controllers
                 var claimsIdentity = (ClaimsIdentity)this.User.Identity;
                 var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
                 CardObject.UserrId = claim.Value;
+               
+
+
 
                 ShoppingCart cartdb = await _context.ShoppingCart.Where(c => c.UserrId == CardObject.UserrId && c.ProductId==CardObject.ProductId).FirstOrDefaultAsync();
 

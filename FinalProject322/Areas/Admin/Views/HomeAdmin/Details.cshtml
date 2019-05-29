@@ -20,70 +20,81 @@
             <div class="col-8">
                 <br />
                 <div class="form-group row">
-                    <div class="col-4">
-                        <label asp-for="Product.Name" class="control-label"></label>
+                    <div class="col-4"> 
+                        <label asp-for="Product.Id" class="control-label" hidden></label>
                     </div>
                     <div class="col-8">
-                        @Html.DisplayFor(model => model.Product.Name)
+                       <label @Html.DisplayFor(model => model.Product.Id)  hidden></label>
                     </div>
-                </div>
-
-
-                <div class="form-group row">
-                    <div class="col-4">
-                        <label asp-for="Product.Description" class="control-label"></label>
-                    </div>
-                    <div class="col-8">
-                        @Html.DisplayFor(model => model.Product.Description)
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <div class="col-4">
-                        <label asp-for="Product.Price" class="control-label"></label>
-                    </div>
-                    <div class="col-8">
-                        @Html.DisplayFor(model => model.Product.Price)
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <div class="col-4">
-                        <label asp-for="Product.CategoryId" class="control-label"></label>
-                    </div>
-                    <div class="col-8">
-                        @Html.DisplayFor(model => model.Product.Name)
-                    </div>
-                </div>
-
-           
-
-                <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Quantity" class="control-label"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Quantity" class="form-control" />
+                    <br />
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="Product.Name" class="control-label"></label>
+                        </div>
+                        <div class="col-8">
+                            @Html.DisplayFor(model => model.Product.Name)
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="Product.Description" class="control-label"></label>
+                        </div>
+                        <div class="col-8">
+                            @Html.DisplayFor(model => model.Product.Description)
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="Product.Price" class="control-label"></label>
+                        </div>
+                        <div class="col-8">
+                            @Html.DisplayFor(model => model.Product.Price)
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="Product.CategoryId" class="control-label"></label>
+                        </div>
+                        <div class="col-8">
+                            @Html.DisplayFor(model => model.Product.Name)
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="Quantity" class="control-label"></label>
+                        </div>
+                        <div class="col-8">
+                            <input asp-for="Quantity" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-4">
+                        </div>
+                        <div class="col-4">
+
+                            <a asp-area="Admin" asp-action="Index" class="btn btn-success form-control text-light">Listeye Dön</a>
+                        </div>
+                        <div class="col-4">
+                            <button type="submit" value="Add to Cart" class="btn btn-primary form-control text-light">Sepete Ekle</button>
+                        </div>
+                    </div>
                 </div>
+
+
             </div>
+            @*<input asp-for="Product.Id" hidden />*@
 
-                <div class="form-group row">
-                    <div class="col-4">
-                    </div>
-                    <div class="col-4">
-                      
-                        <a asp-area="Admin" asp-action="Index" class="btn btn-success form-control text-light">Listeye Dön</a>
-                    </div>
-                    <div class="col-4">
-                        <button type="submit"  value="Add to Cart" class="btn btn-primary form-control text-light">Sepete Ekle</button>
-                    </div>
-                </div>
-            </div>
-            
-
-        </div>
-
-    </form>
+</form>
 </div>
 
 @section  Scripts{ 
