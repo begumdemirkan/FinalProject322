@@ -73,7 +73,7 @@ namespace FinalProject322.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Quantity,Image,CategoryId,Price")] Product product, IFormFile FileUrl)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,Quantity,Image,CategoryId,Price")] Product product, IFormFile FileUrl)
         {
             product.Category = _context.Category.Where(x => x.Id == product.CategoryId).FirstOrDefault();
             if (ModelState.IsValid)

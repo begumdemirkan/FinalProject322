@@ -4,14 +4,16 @@ using FinalProject322.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FinalProject322.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190529004715_ord")]
+    partial class ord
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,9 +55,70 @@ namespace FinalProject322.Data.Migrations
                     b.ToTable("Kupon");
                 });
 
-            modelBuilder.Entity("FinalProject322.Models.Product", b =>
+            modelBuilder.Entity("FinalProject322.Models.Order", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CouponCode");
+
+                    b.Property<double>("CouponDiscoun");
+
+                    b.Property<DateTime>("OrderDate");
+
+                    b.Property<string>("PickUpName");
+
+                    b.Property<string>("UserId")
+                        .IsRequired();
+
+                    b.Property<DateTime>("pickuptime");
+
+                    b.Property<DateTime>("pickuptimegün");
+
+                    b.Property<string>("tel");
+
+                    b.Property<double>("total");
+
+                    b.Property<string>("transactionId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Order");
+                });
+
+            modelBuilder.Entity("FinalProject322.Models.OrderDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Count");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("OrderId");
+
+                    b.Property<double>("Price");
+
+                    b.Property<int>("ProductId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("OrderDetails");
+                });
+
+            modelBuilder.Entity("FinalProject322.Models.Product", b =>
+                {
+                    b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -72,7 +135,7 @@ namespace FinalProject322.Data.Migrations
 
                     b.Property<int>("Quantity");
 
-                    b.HasKey("Id");
+                    b.HasKey("ProductId");
 
                     b.HasIndex("CategoryId");
 
@@ -85,11 +148,11 @@ namespace FinalProject322.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("ApplicationUserId");
+
                     b.Property<int>("ProductId");
 
                     b.Property<int>("Quantity");
-
-                    b.Property<string>("UserrId");
 
                     b.HasKey("Id");
 
@@ -275,6 +338,27 @@ namespace FinalProject322.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("FinalProject322.Models.Order", b =>
+                {
+                    b.HasOne("FinalProject322.Models.Userr", "Userr")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("FinalProject322.Models.OrderDetails", b =>
+                {
+                    b.HasOne("FinalProject322.Models.Order", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("FinalProject322.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("FinalProject322.Models.Product", b =>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject322.Models
 {
-    public class Userr: IdentityUser
+    public class Userr : IdentityUser
     {
         [Required]
         [StringLength(100)]
@@ -17,7 +17,7 @@ namespace FinalProject322.Models
         [Required]
         [StringLength(100)]
         public string Soyad { get; set; }
-        
+
         public string Adres { get; set; }
 
         public string Telefon { get; set; }

@@ -6,6 +6,27 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Areas\Admin\Controllers\CartController.cs" />
+    <Compile Remove="Areas\Admin\Controllers\List.cs" />
+    <Compile Remove="Data\Migrations\20190519205035_manage.cs" />
+    <Compile Remove="Data\Migrations\20190519205035_manage.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190520233311_deneme.cs" />
+    <Compile Remove="Data\Migrations\20190520233311_deneme.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190528135441_cart.cs" />
+    <Compile Remove="Data\Migrations\20190528135441_cart.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190528154528_den.cs" />
+    <Compile Remove="Data\Migrations\20190528154528_den.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190528155606_sepet.cs" />
+    <Compile Remove="Data\Migrations\20190528155606_sepet.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190528160101_bil.cs" />
+    <Compile Remove="Data\Migrations\20190528160101_bil.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190528205435_mr.cs" />
+    <Compile Remove="Data\Migrations\20190528205435_mr.Designer.cs" />
+    <Compile Remove="Models\ProductSelected.cs" />
+    <Compile Remove="Models\ShoppingCartClass.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />

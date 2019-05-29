@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace FinalProject322.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "admin")]
+    //[Authorize(Roles = "admin")]
     public class UserManagementController : Controller
     {
         private readonly ApplicationDbContext _context;

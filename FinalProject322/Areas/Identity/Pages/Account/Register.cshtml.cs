@@ -63,7 +63,7 @@ namespace FinalProject322.Areas.Identity.Pages.Account
             [Required]
             [StringLength(100)]
             public string Soyad { get; set; }
-            [Required]
+            //[Required]
             public string Adres { get; set; }
             [Required]
             public string Telefon { get; set; }

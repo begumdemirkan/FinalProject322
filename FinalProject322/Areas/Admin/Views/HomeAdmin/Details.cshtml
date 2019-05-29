@@ -1,72 +1,94 @@
-﻿@model FinalProject322.Models.Product
+﻿@model FinalProject322.Models.ShoppingCart
+@using FinalProject322.Extensions
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div class="container">
     <br />
     <br />
-    <h4> @Model.Name Detayları</h4>
+    <h4> @Model.Product.Name Detayları</h4>
     <hr />
-
 
     <form method="post">
         <div class="p-4 border rounded row">
             <div class="col-1"></div>
             <div class="col-3">
-                <img src="~/admin/uploads/@Model.Image" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" />
+                <img src="~/admin/uploads/@Model.Product.Image" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" />
             </div>
-
 
             <div class="col-8">
                 <br />
                 <div class="form-group row">
                     <div class="col-4">
-                        <label asp-for="Name" class="control-label"></label>
+                        <label asp-for="Product.Name" class="control-label"></label>
                     </div>
                     <div class="col-8">
-                        @Html.DisplayFor(model => model.Name)
-
-                    </div>
-                </div>
-
-
-
-
-                <div class="form-group row">
-                    <div class="col-4">
-                        <label asp-for="Description" class="control-label"></label>
-                    </div>
-                    <div class="col-8">
-                        @Html.DisplayFor(model => model.Description)
+                        @Html.DisplayFor(model => model.Product.Name)
                     </div>
                 </div>
 
 
                 <div class="form-group row">
                     <div class="col-4">
-                        <label asp-for="Price" class="control-label"></label>
+                        <label asp-for="Product.Description" class="control-label"></label>
                     </div>
                     <div class="col-8">
-                        @Html.DisplayFor(model => model.Price)
+                        @Html.DisplayFor(model => model.Product.Description)
                     </div>
-
                 </div>
-
 
                 <div class="form-group row">
                     <div class="col-4">
-                        <label asp-for="CategoryId" class="control-label"></label>
+                        <label asp-for="Product.Price" class="control-label"></label>
                     </div>
                     <div class="col-8">
-                        @Html.DisplayFor(model => model.CategoryId)
+                        @Html.DisplayFor(model => model.Product.Price)
                     </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Product.CategoryId" class="control-label"></label>
+                    </div>
+                    <div class="col-8">
+                        @Html.DisplayFor(model => model.Product.Name)
+                    </div>
+                </div>
+
+           
+
+                <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Quantity" class="control-label"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Quantity" class="form-control" />
                 </div>
             </div>
 
+                <div class="form-group row">
+                    <div class="col-4">
+                    </div>
+                    <div class="col-4">
+                      
+                        <a asp-area="Admin" asp-action="Index" class="btn btn-success form-control text-light">Listeye Dön</a>
+                    </div>
+                    <div class="col-4">
+                        <button type="submit"  value="Add to Cart" class="btn btn-primary form-control text-light">Sepete Ekle</button>
+                    </div>
+                </div>
+            </div>
+            
+
         </div>
-        
+
     </form>
 </div>
 
+@section  Scripts{ 
+
+    @{ 
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
