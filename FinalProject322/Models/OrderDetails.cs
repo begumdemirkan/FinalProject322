@@ -9,6 +9,7 @@ namespace FinalProject322.Models
 {
     public class OrderDetails
     {
+        public List<ShoppingCart> listCart { get; set; }
 
         [Key]
         public int Id { get; set; }

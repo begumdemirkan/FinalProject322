@@ -10,14 +10,14 @@
     <h4> @Model.Product.Name Detayları</h4>
     <hr />
 
-    <form method="post">
+   <form method="post" asp-action="Create">
         <div class="p-4 border rounded row">
             <div class="col-1"></div>
             <div class="col-3">
                 <img src="~/admin/uploads/@Model.Product.Image" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" />
             </div>
 
-            <div class="col-8">
+            @*<div class="col-8">
                 <br />
                 <div class="form-group row">
                     <div class="col-4"> 
@@ -26,7 +26,7 @@
                     <div class="col-8">
                        <label @Html.DisplayFor(model => model.Product.Id)  hidden></label>
                     </div>
-                </div>
+                </div>*@
                 <div class="col-8">
                     <br />
                     <div class="form-group row">
@@ -92,7 +92,7 @@
 
 
             </div>
-            @*<input asp-for="Product.Id" hidden />*@
+            <input asp-for="ProductId" hidden />
 
 </form>
 </div>

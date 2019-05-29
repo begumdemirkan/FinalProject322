@@ -83,8 +83,9 @@ namespace FinalProject322.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     var user = await _context.Users.Where(u => u.Email == Input.Email).FirstOrDefaultAsync();
-                    List<ShoppingCart> stShoppingCard = await _context.ShoppingCart.Where(u => u.UserrId ==user.Id).ToListAsync();
-                    HttpContext.Session.SetInt32("ssCardCount", stShoppingCard.Count);
+
+                    //List<ShoppingCart> stShoppingCard = await _context.ShoppingCart.Where(u => u.UserrId ==user.Id).ToListAsync();
+                    //HttpContext.Session.SetInt32("ssCardCount", stShoppingCard.Count);
 
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);

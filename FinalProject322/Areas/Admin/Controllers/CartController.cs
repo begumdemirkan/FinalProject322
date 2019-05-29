@@ -6,55 +6,56 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using FinalProject322.Data;
 using FinalProject322.Models;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject322.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CartController : Controller
     {
 
         private readonly ApplicationDbContext _context;
 
         [BindProperty]
-
-        public OrderDetailsCard DetailsCard  { get; set; }
+        public OrderDetails detailCart  { get; set; }
 
         public CartController (ApplicationDbContext context)
         {
             _context = context;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            DetailsCard = new OrderDetailsCard()
+            detailCart = new OrderDetails()
             {
-
 
                 Order = new Models.Order()
 
             };
 
-            DetailsCard.Order.total = 0;
+            detailCart.Order.total = 0;
 
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
-            var cart = _context.ShoppingCart.Where(c => c.ApplicationUserId == claim.Value);
+            var cart = _context.ShoppingCart.Where(c => c.UserrId == claim.Value);
 
             if (cart!= null)
             {
-                DetailsCard.listCart = cart.ToList();
+                detailCart.listCart = cart.ToList();
             }
 
-            foreach(var list in DetailsCard.listCart)
+            foreach(var list in detailCart.listCart)
             {
-                list.Product=
-                list.Product=await _context.Product.FirstOrDefaultAsync(m => m.Id == list.ProductId);
-                DetailsCard.Order.total = DetailsCard.Order.total + (list.Product.Price * List.count);
-                    
+                list.Product = await _context.Product.FirstOrDefaultAsync(m => m.Id == list.ProductId);
+                detailCart.Order.total = detailCart.Order.total + (list.Product.Price * list.Quantity);
+    
                     
             }
-            return View();
+
+            detailCart.Order.total = detailCart.Order.total;
+            return View(detailCart);
         }
 
          

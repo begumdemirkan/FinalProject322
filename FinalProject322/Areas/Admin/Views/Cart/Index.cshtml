@@ -1,0 +1,116 @@
+﻿@model FinalProject322.Models.OrderDetails
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post">
+
+    @if (Model.listCart.Count > 0)
+    {
+        <br />
+        <input id="userId" asp-for="@Model.listCart[0].UserrId" hidden />
+        <div class="backgroundWhiteBorder">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header bg-dark text-light ml-0 row container">
+                        <div class="col-6">
+                            <i class="fa fa-shopping-cart"></i> &nbsp;
+                            Alışveriş Sepeti
+                        </div>
+                        <div class="col-6 text-right">
+                            <a asp-area="Admin" asp-controller="HomeAdmin" asp-action="Index" class="btn btn outline-info btn-sm">Alışverişe Devam Et</a>
+
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        @foreach (var item in Model.listCart)
+                        {
+                            <div class="row">
+                                <div class="d-none d-lg-block col-lg-2 text-center">
+                                    <img src="~/admin/uploads/@item.Product.Image" width="123" height="80" />
+                                </div>
+                                <div class="col-12 text-sm-center col-lg-5 text-center">
+
+                                    <h4><strong>@item.Product.Name</strong></h4>
+                                    <h4><small> @item.Product.Description</small></h4>
+
+
+                                </div>
+                                <div class="col-12 text-sm-center col-lg-5 text-center right row">
+                                    <div class="col-4 text-md-right" style="padding-top:5px;">
+                                        <h4><strong>@item.Product.Price TL <span class="text-muted">X</span>@item.Product.Quantity</strong></h4>
+                                    </div>
+                                    <div class="col-6 col-sm-4 col-lg-6">
+                                        <div class="float-right mx-1">
+                                            <button type="submit" class="btn btn-primary" asp-action="plus" asp-route-cartId="@item.Id">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                            <button type="submit" class="btn btn-danger" asp-action="minus" asp-route-cartId="@item.Id">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 col-sm-4 col-lg-2 text-right">
+                                        <button type="submit" class="btn btn-danger" asp-action="remove" asp-route-cartId="@item.Id">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    >
+                                </div>
+                            </div>
+                        }
+                        <br />
+                        <br />
+                        
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-5">
+                        <div class="row">
+                            <div class="col-7">
+                                <input asp-for="@Model.Order.CouponCode" id="txtCouponCode" class="form-control" placeholder="Kupon Kodu" />
+                            </div>
+                            <div class="col-5" style="margin-top:2px;">
+                                <button type="submit" class="btn btn-sm form-control btn-outline-success" id="btnCoupon" asp-action="addcoupon">
+                                    Kullan
+                                </button>
+                                <button type="submit" class="btn btn-sm form-control btn-outline-success" style="display:none" id="btnCoupon" asp-action="removecoupon">
+                                    Kaldır
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 col-md-5">
+                        <div class="col-12 col-md-6 offset-md-1 col-lg-4 offset-lg-3 pr-4">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between bg-light">
+                                    <span class="text-info">TOPLAM (TL)</span>
+                                    <strong class="text-info"><span id="txtordertotal"></span>@Model.Order.total</strong>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+            </div>
+        
+
+            }
+            else
+            {
+            <div class="backgroundWhiteBorder">Sepetiniz Boştur.</div>
+            }
+
+
+
+
+
+
+    </form>
+

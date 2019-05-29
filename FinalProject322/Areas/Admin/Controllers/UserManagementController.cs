@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using FinalProject322.Data;
 using FinalProject322.Models;
+using FinalProject322.Models;
+using FinalProject322.Models.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

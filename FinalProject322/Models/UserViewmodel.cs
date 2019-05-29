@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FinalProject322.Models
+namespace FinalProject322.Models.ViewModel
 {
     public class UserViewmodel
     {

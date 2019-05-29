@@ -4,14 +4,16 @@ using FinalProject322.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace FinalProject322.Migrations
+namespace FinalProject322.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190529134651_order")]
+    partial class order
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -114,6 +116,21 @@ namespace FinalProject322.Migrations
                     b.ToTable("OrderDetails");
                 });
 
+            modelBuilder.Entity("FinalProject322.Models.OrderDetailsCard", b =>
+                {
+                    b.Property<int>("sayi")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("OrderId");
+
+                    b.HasKey("sayi");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderDetailsCard");
+                });
+
             modelBuilder.Entity("FinalProject322.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -146,7 +163,7 @@ namespace FinalProject322.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("OrderDetailsId");
+                    b.Property<int?>("OrderDetailsCardsayi");
 
                     b.Property<int>("ProductId");
 
@@ -156,7 +173,7 @@ namespace FinalProject322.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderDetailsId");
+                    b.HasIndex("OrderDetailsCardsayi");
 
                     b.ToTable("ShoppingCart");
                 });
@@ -363,6 +380,13 @@ namespace FinalProject322.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("FinalProject322.Models.OrderDetailsCard", b =>
+                {
+                    b.HasOne("FinalProject322.Models.Order", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderId");
+                });
+
             modelBuilder.Entity("FinalProject322.Models.Product", b =>
                 {
                     b.HasOne("FinalProject322.Models.Category", "Category")
@@ -373,9 +397,9 @@ namespace FinalProject322.Migrations
 
             modelBuilder.Entity("FinalProject322.Models.ShoppingCart", b =>
                 {
-                    b.HasOne("FinalProject322.Models.OrderDetails")
+                    b.HasOne("FinalProject322.Models.OrderDetailsCard")
                         .WithMany("listCart")
-                        .HasForeignKey("OrderDetailsId");
+                        .HasForeignKey("OrderDetailsCardsayi");
                 });
 
             modelBuilder.Entity("FinalProject322.Models.Userr", b =>

@@ -7,34 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Areas\Admin\Controllers\CartController.cs" />
+    <Compile Remove="Data\Migrations\**" />
+    <Content Remove="Data\Migrations\**" />
+    <EmbeddedResource Remove="Data\Migrations\**" />
+    <None Remove="Data\Migrations\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Areas\Admin\Controllers\List.cs" />
-    <Compile Remove="Data\Migrations\20190519205035_manage.cs" />
-    <Compile Remove="Data\Migrations\20190519205035_manage.Designer.cs" />
-    <Compile Remove="Data\Migrations\20190520233311_deneme.cs" />
-    <Compile Remove="Data\Migrations\20190520233311_deneme.Designer.cs" />
-    <Compile Remove="Data\Migrations\20190528135441_cart.cs" />
-    <Compile Remove="Data\Migrations\20190528135441_cart.Designer.cs" />
-    <Compile Remove="Data\Migrations\20190528154528_den.cs" />
-    <Compile Remove="Data\Migrations\20190528154528_den.Designer.cs" />
-    <Compile Remove="Data\Migrations\20190528155606_sepet.cs" />
-    <Compile Remove="Data\Migrations\20190528155606_sepet.Designer.cs" />
-    <Compile Remove="Data\Migrations\20190528160101_bil.cs" />
-    <Compile Remove="Data\Migrations\20190528160101_bil.Designer.cs" />
-    <Compile Remove="Data\Migrations\20190528205435_mr.cs" />
-    <Compile Remove="Data\Migrations\20190528205435_mr.Designer.cs" />
-    <Compile Remove="Data\Migrations\20190528214720_ner.cs" />
-    <Compile Remove="Data\Migrations\20190528214720_ner.Designer.cs" />
-    <Compile Remove="Data\Migrations\20190528215103_wq.cs" />
-    <Compile Remove="Data\Migrations\20190528215103_wq.Designer.cs" />
-    <Compile Remove="Data\Migrations\20190529095510_bı.cs" />
-    <Compile Remove="Data\Migrations\20190529095510_bı.Designer.cs" />
-    <Compile Remove="Data\Migrations\20190529110600_anl.cs" />
-    <Compile Remove="Data\Migrations\20190529110600_anl.Designer.cs" />
-    <Compile Remove="Data\Migrations\20190529111404_ndn.cs" />
-    <Compile Remove="Data\Migrations\20190529111404_ndn.Designer.cs" />
+    <Compile Remove="Models\OrderDetailsCard.cs" />
     <Compile Remove="Models\ProductSelected.cs" />
     <Compile Remove="Models\ShoppingCartClass.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Data\Migrations\ApplicationDbContextModelSnapshot.cs" />
   </ItemGroup>
 
 
@@ -52,6 +39,11 @@
     <Folder Include="Areas\Customer\Models\" />
     <Folder Include="Controllers\" />
     <Folder Include="Views\Shared\Components\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="Areas\Admin\Views\Cart\Index.cshtml" />
   </ItemGroup>
 
 </Project>

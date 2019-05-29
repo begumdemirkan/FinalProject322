@@ -88,26 +88,28 @@
 
                                 @if (HttpContextAccessor.HttpContext.Session.GetInt32("ssCartCount") != null)
                                 {
-                                <li style="color:white">
-                                    <a href="#" class="nav-link">
+                            <li style="color:white">
+                                <a href="~/admin/cart/" @*asp-area="Admin" asp-controller="Cart" asp-action="Index"*@ class="nav-link">
 
-                                        @{
-                                            var count = HttpContextAccessor.HttpContext.Session.GetInt32("ssCartCount");
-                                        }
 
-                                        <i class="fas fa-shopping-cart"></i> &nbsp; (@count)
-                                    </a>
-                                </li>
+                                    @{
+                                        var count = HttpContextAccessor.HttpContext.Session.GetInt32("ssCartCount");
+                                    }
+
+                                    <i class="fas fa-shopping-cart"></i> &nbsp; (@count)
+                                </a>
+                            </li>
 
                             }
 
                             else
                             {
                                 <li style="color:white">
-                                    <a href="#" class="nav-link">
-                                        <i class="fas fa-shopping-cart"></i> &nbsp; (0)
-                                    </a>
-                                </li>
+                                   
+                                        <a href="#" class="nav-link">
+                                            <i class="fas fa-shopping-cart"></i> &nbsp; (0)
+                                        </a>
+                                    </li>
 
                             }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using FinalProject322.Models;
+
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,7 +25,14 @@ namespace FinalProject322.Data
 
         public DbSet<ShoppingCart> ShoppingCart { get; set; }
 
-    
+        public DbSet<Order> Order { get; set; }
+
+        public DbSet<OrderDetails> OrderDetails { get; set; }
+
+
+
+
+
 
 
     }

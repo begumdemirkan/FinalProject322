@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using FinalProject322.Models;
 using FinalProject322.Data;
 using Microsoft.EntityFrameworkCore;
+using FinalProject322.Models.ViewModel;
 
 namespace FinalProject322.Controllers
 {

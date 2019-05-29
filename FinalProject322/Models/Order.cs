@@ -25,6 +25,10 @@ namespace FinalProject322.Models
         public double total { get; set; }
 
         [Required]
+        public double totaloriginal { get; set; }
+
+
+        [Required]
         public DateTime pickuptime { get; set; }
 
         public DateTime pickuptimegün { get; set; }
