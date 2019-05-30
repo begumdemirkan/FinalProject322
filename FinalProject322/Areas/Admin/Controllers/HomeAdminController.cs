@@ -11,7 +11,13 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 
-
+/*CartController ve HomeAdmin içindeki sepete ekleme ile ilgili kodlar aşağıdaki linklerden araştırılarak 
+ * ve bazı kodlar kullanılarak yapılmıştır. Ayrıca claimsIdentity kullanımı da netten bulunmuştur. Bilgilerinize.
+https://docs.microsoft.com/tr-tr/aspnet/web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/shopping-carthttps://www.youtube.com/watch?v=A-5VqQqmjd4
+https://www.youtube.com/watch?v=A-5VqQqmjd4
+http://www.alptekinbodur.com/makale/Asp.Net-C-Sharp-Session-Sepet-Yapmak/
+https://www.youtube.com/watch?v=h_jfcLICk_8
+*/
 namespace FinalProject322.Controllers
 {
     [Area("Admin")]
