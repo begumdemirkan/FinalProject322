@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Http;
 namespace FinalProject322.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "admin")]
     public class ProductsController : Controller
     {
        ApplicationDbContext _context;

@@ -101,7 +101,7 @@ namespace FinalProject322.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Parola hatalıdır.");
                     return Page();
                 }
 

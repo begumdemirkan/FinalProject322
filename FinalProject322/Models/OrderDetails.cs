@@ -20,11 +20,11 @@ namespace FinalProject322.Models
         [ForeignKey("OrderId")]
         public virtual Order Order { get; set; }
 
-        [Required]
-        public int ProductId { get; set; }
+        //[Required]
+        //public int ProductId { get; set; }
 
-        [ForeignKey("ProductId")]
-        public virtual Product Product { get; set; }
+        //[ForeignKey("ProductId")]
+        //public virtual Product Product { get; set; }
 
         public int Count { get; set; }
 

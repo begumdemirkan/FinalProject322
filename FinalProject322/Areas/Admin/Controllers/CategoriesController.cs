@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FinalProject322.Data;
 using FinalProject322.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FinalProject322.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "admin")]
     public class CategoriesController : Controller
     {
         private readonly ApplicationDbContext _context;

@@ -6,7 +6,7 @@
     @if (SignInManager.IsSignedIn(User))
     {
     <li class="nav-item row">
-        <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+        <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hoþgeldin @User.Identity.Name!</a>
         <div class="col-1"></div>
         <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">Logout</a>
    
