@@ -54,7 +54,7 @@ namespace FinalProject322.Areas.Admin.Controllers
                     
             }
 
-            detailCart.Order.total = detailCart.Order.total;
+            detailCart.Order.totaloriginal =detailCart.Order.total;
             return View(detailCart);
         }
 
